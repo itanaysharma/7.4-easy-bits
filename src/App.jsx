@@ -8,6 +8,7 @@ import {
   messagingAtom,
   networkAtom,
   notificationAtom,
+  totalNotificationSelector,
 } from "./atoms";
 
 function App() {
@@ -23,19 +24,7 @@ function MainApp() {
   const notificationAtomCount = useRecoilValue(notificationAtom);
   const messagingAtomCount = useRecoilValue(messagingAtom);
 
-  const totalNotificationCount = useMemo(() => {
-    return (
-      networkNotificationCount +
-      jobsAtomCount +
-      notificationAtomCount +
-      messagingAtomCount
-    );
-  }, [
-    notificationAtomCount,
-    jobsAtomCount,
-    notificationAtomCount,
-    messagingAtomCount,
-  ]);
+  const totalNotificationCount = useRecoilValue(totalNotificationSelector);
 
   return (
     <div>
